@@ -2,8 +2,17 @@ defmodule OtpPlayground.FridgeServer do
 	use GenServer
 
 	### Client API
+
 	def start_link(options \\ []) do
     GenServer.start_link __MODULE__, [], options
+	end
+
+	def store(pid, item) do
+		GenServer.call(pid, {:store, item})
+	end
+
+	def take(pid, item) do
+		GenServer.call(pid, {:take, item})
 	end
 
 	### Server API
