@@ -8,4 +8,8 @@ defmodule OtpPlayground.FridgeServer do
 	def handle_call({:store, item}, _from, state) do
 		{:reply, :ok, [item | state]}
 	end
+
+	def handle_call({:take, item}, _from, state) do
+		{:reply, {:ok, item}, state}
+	end
 end
